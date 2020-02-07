@@ -1,0 +1,23 @@
+.next-question-button {
+  grid-area: next-question;
+  width: 300px;
+  margin: 0 auto 20px;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-radius: 5px;
+  border: 0;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.25s;
+
+  &:not(:disabled):hover {
+    color: #fff;
+    background: rgba(#0984e3, 0.55);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
