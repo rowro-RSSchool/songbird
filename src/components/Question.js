@@ -2,10 +2,10 @@ import React from "react";
 import './Question.scss';
 import birdPlaceholder from '../assets/bird-placeholder.jpg';
 
-function Question({ image, name, audio, isRightAnswer }) {
+function Question({ image, name, audio, isShowAnswer }) {
 
-  const title = (isRightAnswer) ? name : '******';
-  const imageUrl = (isRightAnswer) ? image : birdPlaceholder;
+  const title = (isShowAnswer) ? name : '******';
+  const imageUrl = (isShowAnswer) ? image : birdPlaceholder;
 
   return (
     <div className="question">

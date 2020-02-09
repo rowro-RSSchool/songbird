@@ -9,5 +9,14 @@
   &__item {
     padding: 10px 20px;
     border-bottom: 1px solid rgba(#000, 0.25);
+    cursor: pointer;
+
+    &_success {
+      color: #2ecc71;
+    }
+
+    &_error {
+      color: #e74c3c;
+    }
   }
 }
