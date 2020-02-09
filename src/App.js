@@ -19,7 +19,7 @@ function App() {
   const [lastChangedQuestion, setLastChangedQuestion] = useState(null);
 
   const [isLevelComplete, setIsLevelComplete] = useState(false);
-  const [isEndGame, setIsEndGame] = useState(true);
+  const [isEndGame, setIsEndGame] = useState(false);
 
   const steps = [
     'Разминка',

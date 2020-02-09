@@ -60,12 +60,5 @@
 
   &__player {
     width: 100%;
-
-    audio {
-      @media (max-width: 660px) {
-        width: 100%;
-        max-width: 280px;
-      }
-    }
   }
 }
