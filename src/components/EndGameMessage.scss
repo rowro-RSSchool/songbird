@@ -9,10 +9,22 @@
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.29);
   border-radius: 3px;
 
+  @media (max-width: 560px) {
+    grid-column: auto;
+  }
+
+  @media (max-width: 360px) {
+    padding: 15px 10px;
+  }
+
   &__title {
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: 500;
+
+    @media (max-width: 360px) {
+      font-size: 21px;
+    }
   }
 
   &__description {
@@ -30,6 +42,10 @@
     cursor: pointer;
     font-family: inherit;
     transition: all 0.25s;
+
+    @media (max-width: 360px) {
+      width: 100%;
+    }
 
     &:not(:disabled):hover {
       color: #fff;

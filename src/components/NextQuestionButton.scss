@@ -11,6 +11,10 @@
   font-family: inherit;
   transition: all 0.25s;
 
+  @media (max-width: 360px) {
+    width: 100%;
+  }
+
   &:not(:disabled):hover {
     color: #fff;
     background: rgba(#0984e3, 0.55);

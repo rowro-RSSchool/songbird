@@ -6,10 +6,26 @@
   text-align: center;
   border-radius: 3px;
 
+  @media (max-width: 360px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    background: none;
+    box-shadow: none;
+  }
+
   &__item {
     padding: 10px 20px;
     border-bottom: 1px solid rgba(#000, 0.25);
     cursor: pointer;
+
+    @media (max-width: 360px) {
+      width: auto;
+      background: #ffffff;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.29);
+      border-radius: 3px;
+      padding: 10px 10px;
+    }
 
     &_success {
       color: #2ecc71;
