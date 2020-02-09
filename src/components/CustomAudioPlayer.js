@@ -8,7 +8,7 @@ import 'react-soundplayer/styles/icons.css';
 
 import './CustomAudioPlayer.scss'
 
-const CustomAudioPlayer = withCustomAudio(props => {
+function CustomAudioPlayer(props) {
   return (
     <div className="custom-audio-player">
       <PlayButton className="custom-audio-player__play-button" seeking={true} {...props} />
@@ -22,6 +22,6 @@ const CustomAudioPlayer = withCustomAudio(props => {
       </div>
     </div>
   );
-});
+}
 
 export default CustomAudioPlayer;

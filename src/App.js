@@ -34,8 +34,11 @@ function App() {
 
   const maxScore = birds.flat().length - birds.length;
 
-    useEffect(() => {
-    setActiveQuestion(birds[activeStepIndex][activeQuestionIndex]);
+  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+  useEffect(() => {
+    const randomIndex = getRandomNumber(0, birds[activeStepIndex].length);
+    setActiveQuestion(birds[activeStepIndex][randomIndex]);
   }, [activeStepIndex, activeQuestionIndex]);
 
 
@@ -62,7 +65,7 @@ function App() {
       setIsEndGame(true);
     }
 
-    setActiveQuestionIndex(0);
+    setActiveQuestionIndex(getRandomNumber(0, birds[activeStepIndex].length));
     setActiveQuestion(birds[activeStepIndex][activeQuestionIndex]);
 
     setCheckedAnswersIds([]);
