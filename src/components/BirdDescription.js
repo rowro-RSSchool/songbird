@@ -14,7 +14,7 @@ function BirdDescription({image, audio, name, species, description}) {
           <div className="bird-description__title">{name}</div>
           <div className="bird-description__species">{species}</div>
           <div className="bird-description__player">
-            <AudioPlayer streamUrl={audio} preloadType="auto"/>
+            <AudioPlayer streamUrl={audio} preloadType="auto" clientId="xxx"/>
           </div>
         </div>
       </div>

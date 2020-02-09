@@ -17,7 +17,7 @@ function Question({ image, name, audio, isShowAnswer }) {
       <div className="question__content">
         <div className="question__title">{title}</div>
         <div className="question__player">
-          <AudioPlayer streamUrl={audio} preloadType="auto"/>
+          <AudioPlayer streamUrl={audio} preloadType="auto" clientId="xxx"/>
         </div>
       </div>
     </div>

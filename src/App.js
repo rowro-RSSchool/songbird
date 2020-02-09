@@ -30,6 +30,9 @@ function App() {
     'Морские птицы',
   ];
 
+  const correctAnswerAudio = new Audio('/correct.wav');
+  const wrongAnswerAudio = new Audio('/wrong.mp3');
+
   const answers = birds[activeStepIndex].map((item) => ({id: item.id, name: item.name}));
 
   const maxScore = birds.flat().length - birds.length;
@@ -46,8 +49,11 @@ function App() {
     const isRightAnswer = id === activeQuestion.id;
 
     if (isRightAnswer) {
+      correctAnswerAudio.play();
       setScore(score + (answers.length - checkedAnswersIds.length - 1));
       setIsLevelComplete(true);
+    } else {
+      wrongAnswerAudio.play();
     }
 
     if (!isLevelComplete) {
