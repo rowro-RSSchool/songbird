@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Header from "./components/Header";
 import Question from "./components/Question";
 import AnswerList from "./components/AnswerList";
@@ -14,13 +14,13 @@ import {getRandomNumber} from "./helpers/number";
 const correctAnswerAudio = new Audio('/correct.wav');
 const wrongAnswerAudio = new Audio('/wrong.mp3');
 
+const initialRandomIndex = getRandomNumber(0, birds[0].length);
 
 function App() {
   const [score, setScore] = useState(0);
 
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
-  const [activeQuestion, setActiveQuestion] = useState(null);
+  const [activeQuestion, setActiveQuestion] = useState(birds[activeStepIndex][initialRandomIndex]);
 
   const [checkedAnswersIds, setCheckedAnswersIds] = useState([]);
   const [lastChangedQuestion, setLastChangedQuestion] = useState(null);
@@ -40,12 +40,6 @@ function App() {
   const answers = birds[activeStepIndex].map((item) => ({id: item.id, name: item.name}));
 
   const maxScore = birds.flat().length - birds.length;
-
-  useEffect(() => {
-    const randomIndex = getRandomNumber(0, birds[activeStepIndex].length);
-    setActiveQuestion(birds[activeStepIndex][randomIndex]);
-  }, [activeStepIndex, activeQuestionIndex]);
-
 
   const changeAnswer = (id) => {
     const isRightAnswer = id === activeQuestion.id;
@@ -73,8 +67,8 @@ function App() {
       setIsEndGame(true);
     }
 
-    setActiveQuestionIndex(getRandomNumber(0, birds[activeStepIndex].length));
-    setActiveQuestion(birds[activeStepIndex][activeQuestionIndex]);
+    const randomIndex = getRandomNumber(0, birds[0].length);
+    setActiveQuestion(birds[activeStepIndex][randomIndex]);
 
     setCheckedAnswersIds([]);
     setLastChangedQuestion(null);
