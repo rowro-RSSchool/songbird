@@ -3,11 +3,8 @@ import './Question.scss';
 import birdPlaceholder from '../assets/bird-placeholder.jpg';
 
 import CustomAudioPlayer from "./CustomAudioPlayer";
-import {withCustomAudio} from "react-soundplayer/lib/addons";
 
-function Question({ image, name, audio, isShowAnswer }) {
-  const AudioPlayer = withCustomAudio(CustomAudioPlayer);
-
+function Question({ image, name, audio, isShowAnswer, isPauseAudio }) {
   const title = (isShowAnswer) ? name : '******';
   const imageUrl = (isShowAnswer) ? image : birdPlaceholder;
 
@@ -17,7 +14,7 @@ function Question({ image, name, audio, isShowAnswer }) {
       <div className="question__content">
         <div className="question__title">{title}</div>
         <div className="question__player">
-          <AudioPlayer streamUrl={audio} preloadType="auto" clientId="xxx"/>
+          <CustomAudioPlayer audioUrl={audio} isPauseAudio={isPauseAudio}/>
         </div>
       </div>
     </div>

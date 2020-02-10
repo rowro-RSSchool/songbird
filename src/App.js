@@ -28,6 +28,8 @@ function App() {
   const [isLevelComplete, setIsLevelComplete] = useState(false);
   const [isEndGame, setIsEndGame] = useState(false);
 
+  const [isPauseAudio, setIsPauseAudio] = useState(false);
+
   const steps = [
     'Разминка',
     'Воробьиные',
@@ -45,6 +47,7 @@ function App() {
     const isRightAnswer = id === activeQuestion.id;
 
     if (isRightAnswer) {
+      setIsPauseAudio(true);
       correctAnswerAudio.play();
       setScore(score + (answers.length - checkedAnswersIds.length - 1));
       setIsLevelComplete(true);
@@ -86,6 +89,7 @@ function App() {
             name={activeQuestion.name}
             audio={activeQuestion.audio}
             isShowAnswer={isLevelComplete}
+            isPauseAudio={isPauseAudio}
           />
         }
 
