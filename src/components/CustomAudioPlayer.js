@@ -1,5 +1,4 @@
 import React from "react";
-import {withCustomAudio} from "react-soundplayer/lib/addons";
 import {PlayButton, Progress, Timer} from "react-soundplayer/lib/components";
 
 import 'react-soundplayer/styles/progress.css';

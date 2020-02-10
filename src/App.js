@@ -1,12 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import './App.scss';
 import Header from "./components/Header";
 import Question from "./components/Question";
 import AnswerList from "./components/AnswerList";
 import BirdDescription from "./components/BirdDescription";
 import NextQuestionButton from "./components/NextQuestionButton";
-import birds from "./birds";
 import EndGameMessage from "./components/EndGameMessage";
+
+import birds from "./birds";
+
+import './App.scss';
+import {getRandomNumber} from "./helpers/number";
+
+const correctAnswerAudio = new Audio('/correct.wav');
+const wrongAnswerAudio = new Audio('/wrong.mp3');
+
 
 function App() {
   const [score, setScore] = useState(0);
@@ -30,14 +37,9 @@ function App() {
     'Морские птицы',
   ];
 
-  const correctAnswerAudio = new Audio('/correct.wav');
-  const wrongAnswerAudio = new Audio('/wrong.mp3');
-
   const answers = birds[activeStepIndex].map((item) => ({id: item.id, name: item.name}));
 
   const maxScore = birds.flat().length - birds.length;
-
-  const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
   useEffect(() => {
     const randomIndex = getRandomNumber(0, birds[activeStepIndex].length);
