@@ -78,6 +78,7 @@ const App: React.FC = () => {
     setCheckedAnswersIds([]);
     setLastChangedQuestion(null);
     setIsLevelComplete(false);
+    setIsPauseAudio(false);
   };
 
   return (
