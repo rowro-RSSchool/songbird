@@ -1,8 +1,20 @@
 import React from "react";
 import './AnswerList.scss';
 
-function AnswerList({answers, rightAnswerId, checkedAnswers, onChangeAnswer}) {
-  const answerItems = answers.map((item, index) => {
+interface IAnswerListItem {
+  id: number,
+  name: string,
+}
+
+interface AnswerListProps {
+  answers: Array<IAnswerListItem>,
+  rightAnswerId: number,
+  checkedAnswers: Array<number>,
+  onChangeAnswer: Function,
+}
+
+const AnswerList: React.FC<AnswerListProps> = ({answers, rightAnswerId, checkedAnswers, onChangeAnswer}) => {
+  const answerItems = answers.map((item: IAnswerListItem, index: number) => {
     const isRightAnswer = item.id === rightAnswerId;
     let statusClass = '';
     if (checkedAnswers.includes(item.id)) {
@@ -23,6 +35,6 @@ function AnswerList({answers, rightAnswerId, checkedAnswers, onChangeAnswer}) {
       {answerItems}
     </ul>
   );
-}
+};
 
 export default AnswerList;

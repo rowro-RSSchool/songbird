@@ -4,7 +4,15 @@ import birdPlaceholder from '../assets/bird-placeholder.jpg';
 
 import CustomAudioPlayer from "./CustomAudioPlayer";
 
-function Question({ image, name, audio, isShowAnswer, isPauseAudio }) {
+interface QuestionProps {
+  image: string,
+  name: string,
+  audio: string,
+  isShowAnswer: boolean,
+  isPauseAudio: boolean,
+}
+
+const Question: React.FC<QuestionProps> = ({image, name, audio, isShowAnswer, isPauseAudio}) => {
   const title = (isShowAnswer) ? name : '******';
   const imageUrl = (isShowAnswer) ? image : birdPlaceholder;
 
@@ -19,6 +27,6 @@ function Question({ image, name, audio, isShowAnswer, isPauseAudio }) {
       </div>
     </div>
   );
-}
+};
 
 export default Question;

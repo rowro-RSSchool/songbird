@@ -1,7 +1,13 @@
-import React from "react";
+import React, {MouseEventHandler} from "react";
 import "./EndGameMessage.scss"
 
-function EndGameMessage({score, maxScore, onRetry}) {
+interface EndGameMessageProps {
+  score: number,
+  maxScore: number,
+  onRetry: MouseEventHandler,
+}
+
+const EndGameMessage: React.FC<EndGameMessageProps> = ({score, maxScore, onRetry}) => {
   const isWin = score === maxScore;
 
   return (
@@ -22,6 +28,6 @@ function EndGameMessage({score, maxScore, onRetry}) {
       <button className="end-game-message__retry-btn" onClick={onRetry}>Попробовать ещё раз!</button>
     </div>
   );
-}
+};
 
 export default EndGameMessage;

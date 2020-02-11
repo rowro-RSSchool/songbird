@@ -1,5 +1,6 @@
 import React from "react";
 import {useAudio} from 'react-use';
+// @ts-ignore
 import {PlayButton, Progress, Timer} from "react-soundplayer/lib/components";
 
 import 'react-soundplayer/styles/progress.css';
@@ -9,9 +10,12 @@ import 'react-soundplayer/styles/icons.css';
 import './CustomAudioPlayer.scss'
 import {getPercentage} from "../helpers/number";
 
+interface CustomAudioPlayerProps {
+  audioUrl: string,
+  isPauseAudio?: boolean
+}
 
-
-function CustomAudioPlayer({ audioUrl, isPauseAudio }) {
+const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({audioUrl, isPauseAudio}) => {
   const [audio, state, controls] = useAudio({
     src: audioUrl,
     preload: 'auto',
@@ -34,12 +38,12 @@ function CustomAudioPlayer({ audioUrl, isPauseAudio }) {
           className="custom-audio-player__progress"
           innerClassName="custom-audio-player__progress-inner"
           value={getPercentage(state.time, state.duration)}
-          onSeekTrack={(seek) => controls.seek(state.duration * seek)}
+          onSeekTrack={(seek: number) => controls.seek(state.duration * seek)}
         />
         <Timer currentTime={state.time} duration={state.duration}/>
       </div>
     </div>
   );
-}
+};
 
 export default CustomAudioPlayer;

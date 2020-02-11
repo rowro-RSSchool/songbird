@@ -1,4 +1,6 @@
-const birdsData = [
+import {IAnswerItem} from "./types";
+
+const birdsData: Array<Array<IAnswerItem>> = [
   [
     {
       id: 1,

@@ -1,7 +1,13 @@
 import React from 'react';
 import './Header.scss';
 
-function Header({score, steps, activeStepIndex}) {
+interface HeaderProps {
+  score: number,
+  steps: Array<string>,
+  activeStepIndex: number,
+}
+
+const Header: React.FC<HeaderProps> = ({score, steps, activeStepIndex}) => {
   const stepItems = steps.map((item, index) => {
     const isActive = activeStepIndex === index;
 
@@ -23,6 +29,6 @@ function Header({score, steps, activeStepIndex}) {
       </ul>
     </header>
   );
-}
+};
 
 export default Header;

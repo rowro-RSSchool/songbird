@@ -10,20 +10,21 @@ import birds from "./birds";
 
 import './App.scss';
 import {getRandomNumber} from "./helpers/number";
+import {IAnswerItem} from "./types";
 
 const correctAnswerAudio = new Audio('/correct.wav');
 const wrongAnswerAudio = new Audio('/wrong.mp3');
 
 const initialRandomIndex = getRandomNumber(0, birds[0].length);
 
-function App() {
+const App: React.FC = () => {
   const [score, setScore] = useState(0);
 
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [activeQuestion, setActiveQuestion] = useState(birds[activeStepIndex][initialRandomIndex]);
+  const [activeQuestion, setActiveQuestion] = React.useState<IAnswerItem>(birds[activeStepIndex][initialRandomIndex]);
 
-  const [checkedAnswersIds, setCheckedAnswersIds] = useState([]);
-  const [lastChangedQuestion, setLastChangedQuestion] = useState(null);
+  const [checkedAnswersIds, setCheckedAnswersIds] = React.useState<Array<number>>([]);
+  const [lastChangedQuestion, setLastChangedQuestion] = React.useState<IAnswerItem | null>(null);
 
   const [isLevelComplete, setIsLevelComplete] = useState(false);
   const [isEndGame, setIsEndGame] = useState(false);
@@ -43,7 +44,7 @@ function App() {
 
   const maxScore = birds.flat().length - birds.length;
 
-  const changeAnswer = (id) => {
+  const changeAnswer = (id: number) => {
     const isRightAnswer = id === activeQuestion.id;
 
     if (isRightAnswer) {
@@ -59,7 +60,8 @@ function App() {
       setCheckedAnswersIds([...checkedAnswersIds, id]);
     }
 
-    setLastChangedQuestion( birds[activeStepIndex].find((item) => item.id === id ));
+    const selectedQuestion = birds[activeStepIndex].find((item) => item.id === id)!;
+    setLastChangedQuestion(selectedQuestion);
   };
 
   const goToNextLevel = () => {
@@ -123,6 +125,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
