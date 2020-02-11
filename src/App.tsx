@@ -81,6 +81,11 @@ const App: React.FC = () => {
     setIsPauseAudio(false);
   };
 
+  const retryGame = () => {
+    setScore(0);
+    setIsEndGame(false);
+  };
+
   return (
     <div className="app">
       <div className="grid">
@@ -117,7 +122,7 @@ const App: React.FC = () => {
             <div className="bird-description">
               Послушайте плеер и выберите птицу из списка
             </div>
-          : <EndGameMessage score={score} maxScore={maxScore} onRetry={() => setIsEndGame(false)}/>
+          : <EndGameMessage score={score} maxScore={maxScore} onRetry={retryGame}/>
         }
 
         {!isEndGame &&
