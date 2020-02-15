@@ -65,15 +65,19 @@ const App: React.FC = () => {
   };
 
   const goToNextLevel = () => {
+    let nextActiveStepIndex = 0;
+
     if (activeStepIndex < steps.length - 1) {
-      setActiveStepIndex(activeStepIndex + 1);
+      nextActiveStepIndex += 1;
     } else {
-      setActiveStepIndex(0);
       setIsEndGame(true);
     }
 
+    setActiveStepIndex(nextActiveStepIndex);
+
+
     const randomIndex = getRandomNumber(0, birds[0].length);
-    setActiveQuestion(birds[activeStepIndex][randomIndex]);
+    setActiveQuestion(birds[nextActiveStepIndex][randomIndex]);
 
     setCheckedAnswersIds([]);
     setLastChangedQuestion(null);
