@@ -65,11 +65,12 @@ const App: React.FC = () => {
   };
 
   const goToNextLevel = () => {
-    let nextActiveStepIndex = 0;
+    let nextActiveStepIndex = activeStepIndex;
 
     if (activeStepIndex < steps.length - 1) {
       nextActiveStepIndex += 1;
     } else {
+      nextActiveStepIndex = 0;
       setIsEndGame(true);
     }
 
