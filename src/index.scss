@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=cyrillic');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #dfe6e9;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(#000, 0.75);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.grid {
+  display: grid;
+  grid-template-areas: "header header"
+                      "question question"
+                      "answer-list bird-description"
+                      "next-question next-question";
+  grid-template-columns: max(300px) 1fr;
+  align-items: flex-start;
+  column-gap: 20px;
+  row-gap: 20px;
+  max-width: 1130px;
+  min-width: 320px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  @media (max-width: 699px) {
+    grid-template-areas: "header" "question" "answer-list" "bird-description" "next-question";
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 660px) {
+    grid-template-columns: 1fr max(250px);
+
+    grid-template-areas: "header header"
+    "question answer-list"
+    "bird-description bird-description"
+    "next-question next-question";
+  }
+
+  @media (max-width: 560px) {
+    grid-template-areas: "header" "question" "answer-list" "bird-description" "next-question";
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 360px) {
+    padding: 0 10px;
+  }
+}
